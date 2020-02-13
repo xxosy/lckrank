@@ -9,7 +9,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
   providedIn: "root"
 })
 export class TeamService {
-  private teamesUrl = "api/teames";
+  private teamsUrl = "api/teams";
 
   constructor(
     private http: HttpClient,
@@ -19,17 +19,14 @@ export class TeamService {
     this.messageService.add(`TeamService: ${message}`);
   }
   getTeams(): Observable<Team[]> {
-    const req = this.http
-      .get("http://localhost:3000/user/1274347239")
-      .subscribe(response => console.log(response));
     return this.http
-      .get<Team[]>(this.teamesUrl)
-      .pipe(catchError(this.handleError<Team[]>("getTeames", [])));
+      .get<Team[]>(this.teamsUrl)
+      .pipe(catchError(this.handleError<Team[]>("getTeams", [])));
   }
 
   getTeam(id: number): Observable<Team> {
     // TODO: send the message _after_ fetching the team
-    const url = `${this.teamesUrl}/${id}`;
+    const url = `${this.teamsUrl}/${id}`;
     return this.http.get<Team>(url).pipe(
       tap(_ => this.log(`fetched team id=${id}`)),
       catchError(this.handleError<Team>(`getTeam id=${id}`))

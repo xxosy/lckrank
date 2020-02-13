@@ -1,5 +1,10 @@
-<ul>
+<ul class="ranking">
   <li *ngFor="let team of teams">
-    <span>{{ team.rank }}</span> {{ team.name }}
+    <span class="rank">{{ team.rank }}</span>
+    <span class="name">{{ team.name }}</span>
+    <span class="win">{{ team.win }}</span
+    >-
+    <span class="lose">{{ team.lose }}</span>
+    <span>{{ team.point }}</span>
   </li>
 </ul>
